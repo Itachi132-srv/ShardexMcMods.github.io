@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MINECRAFT MODS</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{--g:#5db33a;--g2:#3c8527;--dg:#1e4d12;--bk:#0a0f09;--dirt:#7a4f2a;--pan:#141d13}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bk) conic-gradient(#0e170d 25%,#0b120a 0 50%,#0e170d 0 75%,#0b120a 0) 0 0/48px 48px;color:#e8f5e0;font:22px/1.3 'VT323',monospace;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,.px{font-family:'Press Start 2P',monospace;line-height:1.6;font-weight:400}
+a{color:inherit;text-decoration:none}
+#fx i{position:fixed;bottom:-20px;background:var(--g);opacity:.3;animation:rise linear infinite;z-index:0}
+@keyframes rise{to{transform:translateY(-115vh) rotate(180deg)}}
+header{position:sticky;top:0;z-index:20;background:#070b06;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px 18px;flex-wrap:wrap}
+header::after{content:"";position:absolute;left:0;right:0;top:100%;height:16px;background:linear-gradient(var(--g) 0 8px,transparent 8px),repeating-linear-gradient(90deg,var(--dirt) 0 16px,#6a4222 16px 32px);border-bottom:4px solid #000}
+.logo{font-size:13px;display:flex;align-items:center;gap:10px;color:#9cff4a;text-shadow:3px 3px #000}
+.mini{width:22px;height:22px;background:linear-gradient(var(--g) 0 35%,var(--dirt) 35%);border:3px solid #000;display:inline-block}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+main{position:relative;z-index:1;flex:1;width:100%;max-width:960px;margin:0 auto;padding:44px 16px 30px}
+footer{position:relative;z-index:1;text-align:center;padding:22px 16px;color:#7d9a74;font-size:18px;border-top:4px solid #000;background:#070b06}
+.mc-btn{font:11px/1.5 'Press Start 2P',monospace;color:#fff;background:#8a8a8a;border:3px solid #000;box-shadow:inset -4px -4px 0 #5c5c5c,inset 4px 4px 0 #c4c4c4;text-shadow:2px 2px #3a3a3a;padding:11px 14px;cursor:pointer;transition:transform .08s,filter .15s;display:inline-block;text-align:center}
+.mc-btn:hover{filter:brightness(1.15);transform:translateY(-2px)}
+.mc-btn:active{transform:translateY(2px);box-shadow:inset 4px 4px 0 #5c5c5c,inset -4px -4px 0 #c4c4c4}
+.mc-btn.green,.mc-btn.on{background:var(--g2);box-shadow:inset -4px -4px 0 var(--dg),inset 4px 4px 0 #7fd45a}
+.mc-btn.dis{background:#4a4a4a;box-shadow:inset -4px -4px 0 #2e2e2e,inset 4px 4px 0 #666;color:#999;cursor:not-allowed}
+.mc-btn.dis:hover{transform:none;filter:none}
+.mc-btn.dis small{color:#f5c542;font-size:8px;margin-left:4px}
+.mc-btn:disabled{background:#4a4a4a;box-shadow:inset -4px -4px 0 #2e2e2e,inset 4px 4px 0 #666;color:#999;cursor:not-allowed;transform:none;filter:none}
+.mc-btn.sm{font-size:9px;padding:9px 10px}
+.mc-btn.busy{background:linear-gradient(90deg,#9cff4a var(--p,0%),var(--g2) var(--p,0%))}
+.mc-btn.pop{animation:pop .5s}
+@keyframes pop{40%{transform:scale(1.12)}}
+.panel{background:var(--pan);border:4px solid #000;box-shadow:inset 0 0 0 4px #2b3d27;padding:22px;margin-bottom:18px}
+h2{font-size:18px;margin-bottom:18px;color:#9cff4a;text-shadow:3px 3px #000}
+h3{font-size:12px;margin:22px 0 12px;color:#f5c542;text-shadow:2px 2px #000}
+.hero{text-align:center;padding:20px 0 34px}
+.blk{width:84px;height:84px;margin:0 auto 22px;background:linear-gradient(var(--g) 0 30%,var(--dirt) 30%);border:5px solid #000;box-shadow:inset 6px 6px 0 #7fd45a55,inset -6px -6px 0 #0004;animation:bob 2.6s ease-in-out infinite;position:relative}
+.blk::before{content:"";position:absolute;inset:0;background:repeating-conic-gradient(#0003 0 25%,transparent 0 50%) 0 0/16px 16px;opacity:.5}
+@keyframes bob{50%{transform:translateY(-12px) rotate(4deg)}}
+.hero h1{font-size:clamp(22px,6.5vw,52px);color:#fff;text-shadow:5px 5px 0 #1e4d12,8px 8px 0 #000}
+.splash{display:inline-block;margin:18px 0 6px;color:#ffe83a;font:12px 'Press Start 2P',monospace;text-shadow:2px 2px #3f3a00;transform:rotate(-4deg);animation:sp 1s ease-in-out infinite alternate}
+@keyframes sp{to{transform:rotate(-4deg) scale(1.12)}}
+.hero p{font-size:26px;color:#b9d8ae;margin-bottom:22px}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:18px}
+.stats div{background:#0d140c;border:4px solid #000;box-shadow:inset 0 0 0 3px #2b3d27;padding:16px;text-align:center}
+.stats b{display:block;font:20px 'Press Start 2P';color:#9cff4a;margin-bottom:8px}
+.how ol{padding-left:26px;font-size:24px}.how li{margin-bottom:6px}
+.row{display:flex;align-items:center;gap:14px;padding:16px 18px;margin-bottom:12px;background:#1a261a;border:4px solid #000;box-shadow:inset 4px 4px 0 #2f4a2a,inset -4px -4px 0 #0f170f;transition:background .15s,transform .15s;animation:in .35s both}
+.row:hover{background:#25401f;transform:translateX(8px)}
+.row .i{width:64px;height:64px;flex:none;display:grid;place-items:center;background:var(--dirt);border:3px solid #000;font:11px 'Press Start 2P';object-fit:cover}
+.row .n{flex:1;font:12px/1.7 'Press Start 2P'}
+.row .a{font-size:12px;padding:10px 12px}
+@keyframes in{from{opacity:0;transform:translateX(-18px)}}
+.banner{display:block;width:100%;aspect-ratio:16/6;object-fit:cover;border:4px solid #000;box-shadow:0 0 0 4px #2b3d27;margin-bottom:26px;background:#0d140c}
+.ph{display:grid;place-items:center;font-size:12px;color:#527348;text-align:center;padding:10px}
+.mt{font-size:clamp(16px,4vw,26px);color:#fff;text-shadow:4px 4px #000;margin-bottom:14px}
+.desc{white-space:pre-wrap;font-size:24px;color:#cfe6c6}
+.dl{display:flex;align-items:center;gap:12px 16px;padding:14px;margin-bottom:10px;background:#0d140c;border:4px solid #000;box-shadow:inset 0 0 0 3px #2b3d27;flex-wrap:wrap}
+.dl .px{font-size:12px;min-width:110px;color:#9cff4a}
+.dl .fn{flex:1;min-width:140px;word-break:break-all;color:#b9d8ae}
+.dl .fn small{color:#7d9a74;font-size:20px;margin-left:6px}
+.toast{position:fixed;top:78px;right:12px;z-index:100;background:#1b1b1b;border:4px solid #000;box-shadow:inset 0 0 0 3px #555;padding:12px 16px;max-width:300px;animation:ti .3s,to .4s 3.1s forwards}
+.toast b{display:block;font-size:10px;color:#ffe83a;margin-bottom:6px}
+@keyframes ti{from{transform:translateX(120%)}}@keyframes to{to{opacity:0;transform:translateX(120%)}}
+.xp{position:fixed;width:8px;height:8px;background:#9cff4a;box-shadow:0 0 6px #9cff4a;z-index:99;pointer-events:none;animation:xp .9s ease-out forwards}
+@keyframes xp{to{transform:translate(var(--x),var(--y));opacity:0}}
+.top{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+@media(max-width:600px){body{font-size:20px}.logo{font-size:10px}.mc-btn{font-size:9px}.row .n{font-size:10px}.dl .px{min-width:100%}.dl .mc-btn{width:100%}.toast{top:auto;bottom:12px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="fx"></div>
+<header>
+  <a class="logo px" href="#/home"><span class="mini"></span>MINECRAFT MODS</a>
+  <nav>
+    <a class="mc-btn" data-p="home" href="#/home">HOME</a>
+    <a class="mc-btn" data-p="mcaddon" href="#/mcaddon">MCADDON</a>
+    <button class="mc-btn dis" data-a="soon">MCJAVA<small>SOON</small></button>
+  </nav>
+</header>
+<main id="app"></main>
+<footer>Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</footer>
+
+<script>
+/* =====================================================================
+   EDIT YOUR MODS HERE
+   - icon   : 540x540 image in the same folder as index.html
+   - banner : 1600x600 image in the same folder
+   - file   : exact name of the file you upload to the GitHub repo
+   - label  : the name shown to visitors on the download row
+   ===================================================================== */
+const MODS = [
+  { name: 'Mod', icon: 'brmod1.png', banner: 'brbanner1.png',
+    description: 'Write your description for this mod here.',
+    downloads: [
+      { label: 'Addon',   file: 'shardex-addon-mod.mcaddon' },
+      { label: 'Texture', file: 'shardex-texture-mod.mcpack' },
+      { label: 'Colette', file: 'shardex-colette-mod.mcaddon' }
+    ] },
+  { name: 'Fast Crafting And Fast Loot', icon: 'brmod2.png', banner: 'brbanner2.png',
+    description: 'Write your description for this mod here.',
+    downloads: [ { label: 'Addon', file: 'fast-crafting-and-fast-loot.mcaddon' } ] },
+  { name: 'Offhand Bedrock', icon: 'brmod3.png', banner: 'brbanner3.png',
+    description: 'Write your description for this mod here.',
+    downloads: [ { label: 'Addon', file: 'offhand-bedrock.mcaddon' } ] }
+];
+
+const $ = s => document.querySelector(s), app = $('#app');
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const sz = b => !b ? '' : b < 1048576 ? (b/1024).toFixed(1)+' KB' : (b/1048576).toFixed(1)+' MB';
+const enc = f => encodeURI(f);
+
+/* sounds (generated, no files needed) */
+let ac;
+function beep(f, d = .08, t = 'square', v = .1, f2) {
+  try {
+    ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+    const o = ac.createOscillator(), g = ac.createGain(), n = ac.currentTime;
+    o.type = t; o.frequency.setValueAtTime(f, n);
+    if (f2) o.frequency.exponentialRampToValueAtTime(f2, n + d * .8);
+    g.gain.setValueAtTime(v, n); g.gain.exponentialRampToValueAtTime(.001, n + d);
+    o.connect(g); g.connect(ac.destination); o.start(n); o.stop(n + d);
+  } catch (e) {}
+}
+const click = () => beep(240, .08, 'square', .1, 90);
+const ding = () => { beep(660, .09, 'triangle', .15); setTimeout(() => beep(880, .1, 'triangle', .15), 90); setTimeout(() => beep(1320, .2, 'triangle', .15), 200); };
+document.addEventListener('pointerdown', e => { if (e.target.closest('.mc-btn,.row,.logo')) click(); });
+
+function toast(t, s = '') { const e = document.createElement('div'); e.className = 'toast'; e.innerHTML = `<b class="px">${esc(t)}</b><span>${esc(s)}</span>`; document.body.append(e); setTimeout(() => e.remove(), 3600); }
+function burst(el) { const r = el.getBoundingClientRect(); for (let i = 0; i < 16; i++) { const p = document.createElement('i'); p.className = 'xp'; p.style.cssText = `left:${r.left + r.width / 2}px;top:${r.top + r.height / 2}px;--x:${(Math.random() - .5) * 240}px;--y:${-30 - Math.random() * 130}px`; document.body.append(p); setTimeout(() => p.remove(), 900); } }
+for (let i = 0; i < 18; i++) { const p = document.createElement('i'), s = 6 + Math.random() * 8; p.style.cssText = `left:${Math.random() * 100}%;width:${s}px;height:${s}px;animation-duration:${9 + Math.random() * 14}s;animation-delay:${-Math.random() * 20}s`; $('#fx').append(p); }
+function iconFail(el, n) { const s = document.createElement('span'); s.className = 'i'; s.textContent = n; el.replaceWith(s); }
+function bannerFail(el) { const d = document.createElement('div'); d.className = 'banner ph px'; d.textContent = 'NO BANNER YET'; el.replaceWith(d); }
+
+/* views */
+const SPLASH = ['Free downloads!', 'Craft faster!', 'Now with loot!', 'Offhand ready!', 'Pixel perfect!', '100% blocky!'];
+function viewHome() {
+  const files = MODS.reduce((n, m) => n + m.downloads.length, 0);
+  return `<section class="hero"><div class="blk"></div><h1>MINECRAFT<br>MODS</h1>
+  <div class="splash">${SPLASH[Math.random() * SPLASH.length | 0]}</div>
+  <p>Addons, textures and more for Minecraft Bedrock.</p>
+  <div class="btns"><a class="mc-btn green" href="#/mcaddon">BROWSE MCADDON</a><button class="mc-btn dis" data-a="soon">MCJAVA<small>SOON</small></button></div></section>
+  <div class="stats"><div><b>${MODS.length}</b>Mods</div><div><b>${files}</b>Files</div><div><b>FREE</b>Always</div></div>
+  <div class="panel how"><h2>HOW TO INSTALL</h2><ol>
+  <li>Open a mod and press Download.</li><li>Open the downloaded file with Minecraft.</li><li>Wait for "Import successful", then turn the pack on in your world settings.</li></ol></div>`;
+}
+function viewList() {
+  return `<h2>MCADDON</h2>` + MODS.map((m, i) => `<a class="row" style="animation-delay:${i * 70}ms" href="#/mod/${i}"><img class="i" src="${enc(m.icon)}" alt="" width="64" height="64" onerror="iconFail(this,${i + 1})"><span class="n">${esc(m.name)}</span><span class="mc-btn green a">&#9654;</span></a>`).join('');
+}
+function viewMod(i) {
+  const m = MODS[i];
+  if (!m) return `<div class="panel"><h2>NOT FOUND</h2><a class="mc-btn" href="#/mcaddon">BACK TO LIST</a></div>`;
+  return `<div class="top"><a class="mc-btn sm" href="#/mcaddon">&#9664; BACK</a></div>
+  <img class="banner" src="${enc(m.banner)}" alt="${esc(m.name)}" onerror="bannerFail(this)">
+  <h1 class="mt">${esc(m.name)}</h1>
+  <div class="panel"><div class="desc">${esc(m.description)}</div></div>
+  <h3>DOWNLOADS</h3>
+  ${m.downloads.map((d, j) => `<div class="dl"><div class="px">${esc(d.label)}</div>
+    <div class="fn">${esc(d.file)}<small id="s${j}"></small></div>
+    <button class="mc-btn green" id="b${j}" data-dl="${i}.${j}">&#11015; DOWNLOAD</button></div>`).join('')}`;
+}
+
+/* router */
+function route() {
+  const [p, id] = (location.hash.slice(2) || 'home').split('/');
+  document.querySelectorAll('nav [data-p]').forEach(a => a.classList.toggle('on', a.dataset.p === (p === 'mod' ? 'mcaddon' : p)));
+  window.scrollTo(0, 0);
+  app.innerHTML = p === 'mcaddon' ? viewList() : p === 'mod' ? viewMod(+id) : viewHome();
+  if (p === 'mod' && MODS[+id]) MODS[+id].downloads.forEach(async (d, j) => {   /* show size, or mark missing files */
+    try {
+      const r = await fetch(enc(d.file), { method: 'HEAD' }), b = $('#b' + j);
+      if (r.status === 404 && b) { b.disabled = true; b.textContent = 'NOT UPLOADED'; }
+      else if (r.ok && $('#s' + j)) $('#s' + j).textContent = sz(+r.headers.get('content-length'));
+    } catch (e) {}
+  });
+}
+addEventListener('hashchange', route); route();
+
+/* download: saves the real file with its real name */
+async function download(d, btn) {
+  const label = btn.innerHTML; btn.disabled = true; btn.classList.add('busy');
+  try {
+    const r = await fetch(enc(d.file));
+    if (!r.ok) throw new Error('missing');
+    const total = +r.headers.get('content-length') || 0, rd = r.body.getReader(), parts = []; let got = 0;
+    for (;;) {
+      const { done, value } = await rd.read(); if (done) break;
+      parts.push(value); got += value.length;
+      const pc = total ? Math.min(100, Math.round(got / total * 100)) : 50;
+      btn.style.setProperty('--p', pc + '%'); btn.textContent = total ? `DOWNLOADING ${pc}%` : 'DOWNLOADING...';
+    }
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(parts)); a.download = d.file; document.body.append(a); a.click(); a.remove();
+  } catch (e) {
+    btn.classList.remove('busy'); btn.disabled = false; btn.innerHTML = label;
+    return toast('FILE NOT FOUND', d.file + ' is not uploaded yet.');
+  }
+  btn.classList.remove('busy'); btn.disabled = false; btn.innerHTML = '&#10004; DOWNLOADED'; btn.classList.add('pop');
+  burst(btn); ding(); toast('Advancement Made!', 'Downloaded ' + d.file);
+  setTimeout(() => { btn.innerHTML = label; btn.classList.remove('pop'); }, 2800);
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-dl],[data-a]'); if (!t || t.disabled) return;
+  if (t.dataset.a === 'soon') return toast('MCJAVA', 'Coming soon!');
+  const [i, j] = t.dataset.dl.split('.');
+  download(MODS[i].downloads[j], t);
+});
+</script>
+</body>
+</html>
